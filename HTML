@@ -1,0 +1,129 @@
+//las  imagenes  "tabla" y "logo" se encuentran en mi Pc personal
+
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> IMC </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!--CSS personal-->
+    <link rel="stylesheet" href="stile.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+        
+</head>
+
+<body onload>
+    <div class=" contenido">
+        <div class="navegador col-md-12">
+            <img src="logo.png" alt="LOGO IMC" class=" navegador-logo">
+            <ul class="titulo ">
+                <h1 style="color:rgb(10, 2, 2);" style="font-size: 100px;">Calculadora del índice de masa corporal (IMC)
+                </h1>
+            </ul>
+        </div>
+        <div class="teoria row col-md-12">
+            <div class="col-md-1"></div>
+            <div class="col-md-8">
+                <p>El índice de masa corporal (IMC) es un método utilizado para estimar la cantidad de grasa corporal que tiene una persona, y determinar por tanto si el peso está dentro del rango normal, o por el contrario, se tiene sobrepeso o delgadez. Para ello, se pone en relación la estatura y el peso actual del individuo. Esta fórmula matemática fue ideada por el estadístico belga Adolphe Quetelet, por lo que también se conoce como índice de Quetelet o Body Mass Index (BMI).</p>
+                <p>Actualmente, esta fórmula está cayendo en desuso porque se está viendo que el IMC no hace diferencia entre la grasa corporal y la muscular, lo que hace que no sea muy exacto. “Un deportista o un culturista van a tener siempre un sobrepeso si tenemos en cuenta su peso respecto a la altura, pero no tienen los problemas de salud que tiene una persona obesa. Esta última tiene problemas debido a la cantidad de grasa que tienen, no por el peso”, explica Carmen Escalada, nutricionista del Instituto Médico Europeo de la Obesidad (IMEO). La cantidad de grasa marca mejor nuestro estado de salud.</p>
+                <p>El IMC es una fórmula que se calcula dividiendo el peso, expresado siempre en Kg, entre la altura, siempre en metros al cuadrado.La Organización Mundial de la Salud, ha propuesto una clasificación del estado nutricional
+                    dependiendo del IMC de una persona.
+                </p>
+            </div>
+                <div class="card " style="width: 18rem;">
+                    <img src="tabla.png" class="card-img-top">
+                    <div class="card-body">
+                        <p style="font-size: 18px;" style="font-size:15px ;" class="card-text">La OMS recomienda encarecidamente una dieta sana, actividad física y dejar el tabaco.La actividad física regular reduce el peso corporal y contribuye a la prevención de las enfermedades cardiovasculares.</p>
+                            <a href="https://www.who.int/dietphysicalactivity/childhood_what/es/" class="btn btn-primary stretched-link">Seguir leyendo</a>
+                    </div>
+                </div>
+        </div>
+
+        <!--calculos :D-->
+        <div class="fondo_2 row col-md-12">
+            <div class="row col-md-12">
+                <div class="col-md-1"></div>
+                <div class="form-floating mb-3 col-md-3">
+                    <input style="font-size: 22px;" type="number" class="form-control" name="peso" id="peso" size="4" maxlength="5"
+                        placeholder="----">
+                    <label for="floatingInput">Peso en Kg. </label>
+                </div>
+                <div class="form-floating mb-3 col-md-4">
+                    <input style="font-size: 22px;" type="number" class="form-control" name="altura" id="altura" size="4" maxlength="4"
+                        placeholder="----">
+                    <label for="floatingInput">Altura en cm. </label>
+                </div>
+                <p class="col-md-4">
+                    <button style="height: 60px;" style="font-size: 60px;" type="button"
+                        class="btn btn-outline-secondary" id="calculo" value="Calcular "
+                        onclick="calculaIMC()">Calcular</button>
+                </p>
+
+            </div>
+            <div class="row col-md-12">
+                <div class="col-md-1"></div>
+                <div class="col-md-9">
+                 <hr name="imc" id="imc"></hr>
+
+                </div>
+            </div>
+            <div class="row col-md-12">
+                <div class="col-md-1"></div>
+                <div class="col-md-9">
+                    Su IMC es:
+                    <b style="color: blue;" name="concejo" id="concejo"></b><p>
+                    </p>
+                    Su peso está en la categoría de :
+                    <b style="color: blue;" name="categoria" id="categoria"></b><p></p>
+                    <p style="color: blue;" name="texto" id="texto"></p>
+                </div>
+            </div>
+            <div class="fondo_3 row col-md-12">
+                <div class="row cold-md-12">
+                    <div class="col-md-2"></div>
+                    <table class="table col-md-9 ml-4">
+                        <thead>
+                            <tr>
+                                <th scope="col">IMC</th>
+                                <th scope="col">Nivel de peso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Por debajo de 18.5</td>
+                                <td>Bajo peso</td>
+                            </tr>
+                            <tr>
+                                <td>18.5 - 24.9</td>
+                                <td>Normal</td>
+                            </tr>
+                            <tr>
+                                <td> 25.0 - 29.9 </td>
+                                <td>Sobrepeso</td>
+                            </tr>
+                            <tr>
+                                <td>30.0 o más</td>
+                                <td>Obeso</td>
+                </div>
+            </div>
+
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script src="main.js"></script>
+</body>
+
+</html>
