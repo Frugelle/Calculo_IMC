@@ -1,0 +1,63 @@
+function calculaIMC() {
+    var peso, altura, imc, concejo, resultado,categoria,texto;
+
+    peso = document.getElementById('peso').value;
+    altura = document.getElementById('altura').value / 100;
+    imc = peso / (altura * altura);
+
+
+    if(validado(peso, altura)){
+        imc ? document.getElementById('imc').value = imc.toFixed(2) : imc = 0;
+        document.getElementById("imc").innerHTML = imc;
+        
+        if (imc <= 18.5) {
+            
+            concejo = imc.toFixed(2) ;
+            categoria="Bajo peso " ;
+            texto=" Hable con su proveedor de atención médica para establecer las posibles causas del bajo peso y si necesita ganar peso.";
+    
+        } else if(imc> 18.5 && imc <= 24.9){
+            concejo =imc.toFixed(2) ;
+            categoria=" Normal " ;
+            texto=" Mantener un peso saludable puede reducir el riesgo de enfermedades crónicas asociadas al sobrepeso y la obesidad. ";
+
+        }else  if (imc >= 25.0 && imc <=29.9) {
+            concejo =imc.toFixed(2) ;
+            categoria=" Sobrepeso " ;
+            texto=" Las personas que tienen sobrepeso o son obesas tienen un mayor riesgo de afecciones crónicas, tales como hipertensión arterial, diabetes y colesterol alto. ";
+        }
+        else {
+            concejo =imc.toFixed(2) ;
+            categoria=" Obeso " ;
+            texto=" Toda persona que tenga sobrepeso debería tratar de evitar ganar más peso. Además, si usted tiene sobrepeso junto con otros factores de riesgo (como niveles altos de colesterol LDL, niveles bajos de colesterol HDL o hipertensión arterial), debería tratar de perder peso. Incluso una pequeña disminución (tan solo 10 % de su peso actual) puede ayudar a disminuir el riesgo de enfermedades. Hable con su proveedor de atención médica para establecer maneras adecuadas de perder peso. ";
+        }
+       imc ? document.getElementById('concejo').value = concejo : concejo = ' ';
+        document.getElementById("concejo").innerHTML = concejo;
+        //console.log(concejo);
+
+      imc ? document.getElementById('categoria').value = categoria : categoria = ' ';
+       document.getElementById("categoria").innerHTML = categoria;
+       //
+       imc ? document.getElementById('texto').value = texto : texto = ' ';
+       document.getElementById("texto").innerHTML = texto;
+    }
+      
+}
+function validado(peso, altura) {
+    if (!peso || !altura) {
+        Swal.fire({
+            icon: 'error',
+            title: '¡Error!',
+            text: ' No hay valores ,Intenta de nuevo :) ',
+          })
+          return false;
+    }else if(peso == 0 || altura == 0 ){
+        Swal.fire({
+            icon: 'error',
+            title: '¡Error!',
+            text: ' Pon datos :))))) ',
+          })
+          return false;
+    }
+    return true;
+}
